@@ -21,13 +21,15 @@ const useSocket = (userId, onNewFood) => {
 
     socket.on("new-food-nearby", (data) => {
       console.log("🔔 New food received:", data);
-      onNewFood && onNewFood(data);
+      if (onNewFood) {
+        onNewFood(data);
+      }
     });
 
     return () => {
       socket.disconnect();
     };
-  }, [userId]);
+  }, [userId, onNewFood]); // ✅ FIXED
 
   return socketRef.current;
 };
