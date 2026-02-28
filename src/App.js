@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './context/AuthContext';
 import { FoodProvider } from './context/FoodContext';
+import { NotificationProvider } from './context/NotificationContext';
 
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -22,60 +23,62 @@ function App() {
   return (
     <AuthProvider>
       <FoodProvider>
-        <Router>
-          <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-500">
-            
-            <Toaster position="top-right" />
+        <NotificationProvider> {/* ✅ ADDED HERE */}
+          <Router>
+            <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-500">
 
-            <Routes>
+              <Toaster position="top-right" />
 
-              {/* Public routes */}
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
+              <Routes>
 
-              {/* Donor routes */}
-              <Route
-                path="/donor/dashboard"
-                element={
-                  <ProtectedRoute>
-                    <DonorDashboard />
-                  </ProtectedRoute>
-                }
-              />
+                {/* Public routes */}
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
 
-              <Route
-                path="/donor/create-food"
-                element={
-                  <ProtectedRoute>
-                    <CreateFood />
-                  </ProtectedRoute>
-                }
-              />
+                {/* Donor routes */}
+                <Route
+                  path="/donor/dashboard"
+                  element={
+                    <ProtectedRoute>
+                      <DonorDashboard />
+                    </ProtectedRoute>
+                  }
+                />
 
-              {/* NGO routes */}
-              <Route
-                path="/ngo/dashboard"
-                element={
-                  <ProtectedRoute>
-                    <NGODashboard />
-                  </ProtectedRoute>
-                }
-              />
+                <Route
+                  path="/donor/create-food"
+                  element={
+                    <ProtectedRoute>
+                      <CreateFood />
+                    </ProtectedRoute>
+                  }
+                />
 
-              <Route
-                path="/ngo/browse"
-                element={
-                  <ProtectedRoute>
-                    <BrowseFood />
-                  </ProtectedRoute>
-                }
-              />
+                {/* NGO routes */}
+                <Route
+                  path="/ngo/dashboard"
+                  element={
+                    <ProtectedRoute>
+                      <NGODashboard />
+                    </ProtectedRoute>
+                  }
+                />
 
-            </Routes>
+                <Route
+                  path="/ngo/browse"
+                  element={
+                    <ProtectedRoute>
+                      <BrowseFood />
+                    </ProtectedRoute>
+                  }
+                />
 
-          </div>
-        </Router>
+              </Routes>
+
+            </div>
+          </Router>
+        </NotificationProvider>
       </FoodProvider>
     </AuthProvider>
   );

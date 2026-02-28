@@ -5,6 +5,7 @@ import Navbar from "../components/layout/Navbar";
 import CountUp from "react-countup";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import bgImage from "../assets/bg.jpeg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -101,7 +102,22 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-green-50 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
-      
+
+      {/* ── Background Image (blurred + low opacity) ── */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `url(${bgImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+          filter: 'blur(6px)',
+          opacity: 0.18,
+          transform: 'scale(1.05)', // prevents blurred edges from showing a white border
+          pointerEvents: 'none'
+        }}
+      />
+
       {/* Ambient Background Elements */}
       <div className="absolute top-20 left-10 w-96 h-96 bg-green-400/10 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-40 right-20 w-80 h-80 bg-emerald-400/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
@@ -110,7 +126,7 @@ const Home = () => {
       <Navbar />
 
       {/* HERO SECTION */}
-      <section className="max-w-7xl mx-auto px-6 pt-32 pb-20 text-center hero-parallax">
+      <section className="max-w-7xl mx-auto px-6 pt-32 pb-20 text-center hero-parallax relative z-10">
         <div className="animate-fadeIn">
           <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6">
             <span className="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">
@@ -134,7 +150,7 @@ const Home = () => {
 
       {/* IMPACT STATS */}
       <section className="max-w-7xl mx-auto px-6 py-20 fade-in relative z-10">
-        <div className="glass-effect rounded-3xl shadow-2xl p-12 md:p-16 border border-green-100 dark:border-green-900/30">
+        <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-12 md:p-16 border border-green-100 dark:border-green-900/30">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white">
             Our Impact
           </h2>
@@ -179,7 +195,7 @@ const Home = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           
-          <div className="group glass-effect p-10 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-green-50 dark:border-green-900/20">
+          <div className="group bg-white dark:bg-gray-800 p-10 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-green-50 dark:border-green-900/20">
             <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
               🍽️
             </div>
@@ -191,7 +207,7 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="group glass-effect p-10 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-green-50 dark:border-green-900/20">
+          <div className="group bg-white dark:bg-gray-800 p-10 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-green-50 dark:border-green-900/20">
             <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
               ❤️
             </div>
@@ -229,7 +245,7 @@ const Home = () => {
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-gray-900 text-white py-8 mt-20">
+      <footer className="bg-gray-900 text-white py-8 mt-20 relative z-10">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <p className="text-gray-400">
             © {new Date().getFullYear()} AkshayPatra — From Surplus to Smiles
