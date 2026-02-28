@@ -1,10 +1,10 @@
 // src/pages/donor/DonorDashboard.js
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
 import Navbar from "../../components/layout/Navbar";
-import CountUp from "react-countup";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useNavigate, Link } from "react-router-dom";
+import CountUp from "react-countup";
 
 gsap.registerPlugin(ScrollTrigger);
 
