@@ -1,8 +1,7 @@
 // src/pages/ngo/NgoDashboard.js
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/layout/Navbar";
-import CountUp from "react-countup";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import useSocket from "../../hooks/useSocket";
@@ -27,7 +26,7 @@ const sampleListings = [
 ];
 
 export default function NgoDashboard() {
-  const navigate = useNavigate();
+ // const navigate = useNavigate();
   const rootRef = useRef(null);
 
   const { addNotification } = useNotifications();
@@ -112,7 +111,7 @@ export default function NgoDashboard() {
     }, 4000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [addNotification]);
 
   /* =========================
      GSAP ANIMATIONS
